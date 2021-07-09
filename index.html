@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch Me If You Can</title>
 </head>
+
 <body>
-    <div class="content">
-        
+    <div id="content">
+
     </div>
+
+    <script>
+        // The fetch function, requires 2 promises to obtain value. therefore 2 .then elements.
+        // sometimes the promises do not work out, in that case we can use the catch method. 
+        fetch("https://ci-swapi.herokuapp.com/api/")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('content').innerText = data.planets;
+            })
+            // This will console.log out the error that occurs.
+            .catch((e) => {
+                console.error("Error", e);
+            })
+    </script>
 </body>
+
 </html>
